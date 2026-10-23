@@ -60,6 +60,9 @@ baseNames = header_tr(isNum_tr & ~strcmp(header_tr, target));
 L.plotOriginalFeatures(header_tr, data_train, isNum_tr, target, baseNames);   
 L.plotFeaturesVsTarget(header_tr, data_train, isNum_tr, target, 6);
 
+% matriz de correlacao
+L.plotCorrelationHeatmap(header_tr, data_train, isNum_tr, 'Matriz de correlacao das variaveis originais e do CO');
+
 %% 4. Data Preprocessing
 
 % StandardScaler nas 11 variaveis
@@ -113,9 +116,6 @@ obrigatorias = {'DayOfWeek_sin', 'DayOfWeek_cos'};
 
 [header_tr, data_train, isNum_tr, selection] = L.selectFeatures(header_tr, data_train, isNum_tr, target, 0.15, 0.1, 0.999, 0.9, ciclos, obrigatorias);
 [header_tr, data_train, isNum_tr, removed] = L.removeUnimportantFeatures(header_tr, data_train, isNum_tr, target, 0.005, ciclos, obrigatorias);
-
-% Matriz de correlacao das features escolhidas e do CO
-L.plotCorrelationHeatmap(header_tr, data_train, isNum_tr, 'Matriz de correlacao das features escolhidas e do CO');
 
 % LDA com as variaveis continuas escolhidas (sem as interacoes)
 excluir = {};
